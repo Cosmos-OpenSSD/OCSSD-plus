@@ -142,7 +142,7 @@ void CompleteChildNandReqOfNvmeIoCmd(unsigned int cmdSlotTag, unsigned int reqSt
 		if(--nvmeIoCmdCompleteTablePtr->nvmeIoCmdCompleteEntry[cmdSlotTag].notCompletedChildNandReqCount == 0)
 		{
 			nvmeCPL.statusFieldWord = 0;
-			nvmeCPL.statusField.DNR = 1;
+			nvmeCPL.statusField.DNR = 0;
 
 			if(nvmeIoCmdCompleteTablePtr->nvmeIoCmdCompleteEntry[cmdSlotTag].fail)
 			{
@@ -197,7 +197,7 @@ void CompleteChildDmaReqOfNvmeIoCmd(unsigned int reqSlotTag, unsigned int cmdSlo
 		if(--nvmeIoCmdCompleteTablePtr->nvmeIoCmdCompleteEntry[cmdSlotTag].notCompletedChildDmaReqCount == 0)
 		{
 			nvmeCPL.statusFieldWord = 0;
-			nvmeCPL.statusField.DNR = 1;
+			nvmeCPL.statusField.DNR = 0;
 
 			if(reqCode == REQ_CODE_TxDMA)
 			{
